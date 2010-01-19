@@ -1,0 +1,9 @@
+\select@language {czech}
+\contentsline {section}{\numberline {1}O programu}{2}
+\contentsline {subsection}{\numberline {1.1}Ku\IeC {\v z}elose\IeC {\v c}ky}{2}
+\contentsline {section}{\numberline {2}Kompilace programu}{3}
+\contentsline {subsection}{\numberline {2.1}Kompilace na Linuxu a ostatn\IeC {\'\i }ch Unix* like syst\IeC {\'e}mech}{3}
+\contentsline {subsection}{\numberline {2.2}Kompilace pod Windows}{3}
+\contentsline {section}{\numberline {3}Pou\IeC {\v z}\IeC {\'\i }v\IeC {\'a}n\IeC {\'\i } programu}{4}
+\contentsline {section}{\numberline {4}Uk\IeC {\'a}zky z b\IeC {\v e}hu}{6}
+\contentsline {section}{\numberline {5}Dodate\IeC {\v c}n\IeC {\'e} informace}{7}

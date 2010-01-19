@@ -1,0 +1,58 @@
+# depslib dependency file v1.0
+1241126816 source:/home/garret/Projekty/Rocnikovka/tafel 0.2/equation.cpp
+	<cmath>
+	<iostream>
+	<string>
+	"equation.h"
+
+1241120325 /home/garret/Projekty/Rocnikovka/tafel 0.2/equation.h
+	<string>
+
+1241123186 source:/home/garret/Projekty/Rocnikovka/tafel 0.2/main.cpp
+	<cstdlib>
+	<stdlib.h>
+	<SDL/SDL.h>
+	<SDL/SDL_gfxPrimitives.h>
+	<SDL/SDL.h>
+	<SDL/SDL_gfxPrimitives.h>
+	<iostream>
+	<fstream>
+	<string>
+	"equation.h"
+	"defines.h"
+
+1240910481 /home/garret/Projekty/Rocnikovka/tafel 0.2/defines.h
+
+1241299111 source:/home/garret/Projekty/Rocnikovka/tafel_0.2/equation.cpp
+	<cmath>
+	<iostream>
+	<string>
+	"equation.h"
+	"defines.h"
+
+1241299121 /home/garret/Projekty/Rocnikovka/tafel_0.2/equation.h
+	<string>
+	<cstdlib>
+	<iostream>
+	<SDL/SDL.h>
+	<SDL/SDL_gfxPrimitives.h>
+
+1241183924 /home/garret/Projekty/Rocnikovka/tafel_0.2/defines.h
+
+1241299519 source:/home/garret/Projekty/Rocnikovka/tafel_0.2/main.cpp
+	<cstdlib>
+	<stdlib.h>
+	<SDL/SDL.h>
+	<SDL/SDL_gfxPrimitives.h>
+	<SDL/SDL.h>
+	<SDL/SDL_gfxPrimitives.h>
+	<iostream>
+	<fstream>
+	<string>
+	<cstring>
+	"equation.h"
+	"defines.h"
+	"version.h"
+
+1241283402 /home/garret/Projekty/Rocnikovka/tafel_0.2/version.h
+

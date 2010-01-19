@@ -1,0 +1,13 @@
+Tafel
+
+Jan Sedlák, 2009
+released under GNU/GPL
+Licence is situated in file "licence.txt".
+
+In ./bin are binaries for several platforms. On unix usually doesn't work, compile it by yourself.
+In ./man are manuals, in PDF, manual.pdf is userguide and manual2.pdf is programmers guide. Beware,
+it is only in czech.
+In ./pics are pictures from program.
+In ./src are sourcecodes. In ./src/msc - dev-c++ are files for dev-c++ project, in ./src/msc - cb are
+project files for Code::Blocks.
+Feel free to copy.

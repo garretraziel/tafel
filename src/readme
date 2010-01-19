@@ -1,0 +1,39 @@
+Tafel
+
+Jan Sedlák, 2009
+released under GNU/GPL
+
+program for drawing Conic sections
+
+general eqation of Conic section is
+
+ax^2 + bxy + cy^2 + dx + ey + f = 0
+
+USING
+	run tafel with arguments:
+		first -a is argument with x^2
+		second -b is argument with xy
+		third -c is argument with y^2
+		fourth -d is argument with x
+		fifth -e is argument with y
+		sixth -f is standalone (real) argument
+		seventh argument -ec can be colour (white, red, blue, green, yellow, black, purple) - default is red
+		
+		next arguments:
+		-v displays verion and quits
+		-h displays helpfile and quits
+		-n for new conic - type conic attributes, then type -n and then you can type attributes of another conic section
+
+		NOT WORKING (only for now)
+		-fn for input from file
+
+	press ESC for quit
+
+COMPILING
+	under Linux you must have GCC with C++ support and SDL + SDL_gfx development libraries 
+	
+	compile as: g++ -lSDL -lSDL_gfx -lm main.cpp equation.cpp -o tafel
+
+	OR
+
+	make

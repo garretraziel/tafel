@@ -1,0 +1,68 @@
+\documentclass[a4paper,11pt]{article}
+\usepackage[czech]{babel}
+\usepackage[cp1250]{inputenc}
+\usepackage{latexsym}
+\pagestyle{headings}
+\frenchspacing
+\author{Jan Sedlák}
+\title{Programátorskı manuál k programu Tafel}
+\begin{document}
+\maketitle
+\tableofcontents
+\newpage
+\section{O programu}
+Program Tafel slouí k vykreslování kueloseèek do kartézské souøadné soustavy.
+\subsection{Kueloseèky}
+Mezi obecné kueloseèky patøí krunice, elipsa, parabola a hyperbola. Bod a pøímka se dají také vyjádøit obecnou rovnicí, ale nepatøí mezi obecné kueloseèky (pro naprosté objasnìní problému doporuèuji èlánek kueloseèky na èeské wikipedii) a program Tafel se jimi nezabıvá.\\
+
+\emph{Všechny kueloseèky se dají vyjádøit obecnou rovnicí}\\
+
+\emph{$a*x^{2}+b*x*y+c*y^{2}+d*x+e*y+f=0$}\\
+
+\emph{a v této obecné rovnici oèekává program vstup\footnote{Vstup musí bıt v naprosto dopoèítané obecné rovnici, program pouze pracuje s hodnotami, ale nesnaí se je nijak dopoèítávat.}.}\\
+
+Pro získání souøadnic $x$ a $y$ mùeme pouít následující kvadratické rovnice (které získáme vypoèítáním z obecné rovnice kueloseèek):\\
+
+%tady je prvni vzorec
+\emph{$y_{1,2}=\frac{-(b*x+e)\pm \sqrt{(b*x+e)^{2}-4*c*(d*x+f)}}{2*c}$}\label{rovnice}\\
+
+a\\
+
+%tady je druhy vzorec
+\emph{$x_{1,2}=\frac{-(b*y+d)\pm \sqrt{(b*y+d)^{2}-4*a*(e*y+f)}}{2*a}$}\\
+
+Idea byla taková, e po vykreslení souøadné soustavy program projede veškeré pixely ve smìru osy x a poté ve smìru osy y, zjistí zda-li pro danı bod existuje (popøípadì jestli je jeden, nebo dva) odpovídající bod a poté ho vykreslí. Protoe pro zjištìní pouívá pøedchozí rovnice, je patrné, e musí urèitì bıt zadány hodnoty $a$ a $c$, jinak je v programu dìlení nulou (to je také ten dùvod, proè program nemùe vykreslovat bod a pøímku). Pravda je však taková, e u nìkterıch parabol je hodnota $a$ NEBO hodnota $c$ nulová. Naštìstí není pøípad, e by byly nulové obì zároveò, proto vše program kontroluje a poté vykresluje jenom v ose x (popøípadì jenom v ose y). Z tohoto dùvodu jsou ale nìkteré paraboly vykreslené nedokonale (jejich vrchní èásti jsou pouze vyteèkovány). Z dùvodu chybejících hodnot $a$ a $c$ také nelze vykreslit speciální pøípad hyperboly, rovnoosou hyperbolu.
+\newpage
+\section{O kódu}
+Program Tafel je psanı v jazyce C++. Jazyk C++ je objektovì orientovanı vyší jazyk, dobøe uzpùsobenı práci na nároènìjších projektech. Podpora objektù je v C++ opravdu na vysoké úrovni a proto není divu, e objekty vyuívá i mùj program. Program Tafel dále vyuívá profesionální grafickou knihovku SDL (zveøejnìnou pod licencí GNU/GPL). Program je psanı hlavnì pro operaèní systém Linux (aè zkompilování pro M\$ Windows je moné také), kterı je doopravdy vhodnì pøipraven a uzpùsoben pro programování a spouštìní programù napsanıch v jazycích C/C++.\\
+Program byl psán v IDE Code::Blocks, opravdu velmi pohodlném, open-source a multiplatformním IDE pro psaní C/C++, dále v jednoduchém editoru Geany a textovém editoru vim urèenım pro konzoli. Program byl kompilován kompilerem gcc (Gnu C Compiler), kterı je souèástí projektu GNU.\\
+\subsection{Kompilace pod Unix* like systémy, napø. Linuxem}
+Pro zkompilování programu na Unix systémy potøebujete knihovnu SDL, knihovnu SDL\_gfx, C++ kompiler (napø. gcc s podporou C++) a pro snaší kompilaci i program Gnu make. Obvyklı postup je, e ze stromu Vaší distribuce stáhnete balíèky SDL, SDL-devel a SDL\_gfx, v terminálu se pøepnete do adresáøe s programem a napíšete \uv{make}.\\
+Dalším monım zpùsobem je samozøejmì zkompilování veškerıch balíèkù ze zdrojovıch kódù. Pokud nemáte program Gnu Make, staèí napsat \emph{g++ -lSDL -lm -lSDL\_gfx -Wall main.cpp equation.cpp -o tafel} 
+\subsection{Kompilace pod MS Windows}
+Pro zkompilování balíèkù pod Windows musíte mít staeny a zkompilovány knihovny SDL, SDL-devel a SDL\_gfx. Bohuel, v binární podobì jsou pro Windows k nesehnání (s obtíemi se ale sehnat dají, zkuste google) a tak jsou dvì monosti. Buï stáhnout a zkompilovat SDL (s tím není moc velkı problém, návod je na oficiálních stránkách) a SDL\_gfx (zde u je problém vìtší) ze zdrojovıch kódù, stáhnout si C++ kompiler pro Windows (MS C++ Visual Studio apod.) a zkompilovat zdrojové kódy v závislosti na zvoleném kompileru, èi stáhnout si IDE jménem Dev-C++ (s kompilerem Mingw), odsud stáhnout SDL a SDL\_gfx z balíèkù jako plugin (volba \uv{Získání aktualizací}) a zkompilovat poté program v nìm. Hodnì štìstí pøi kompilaci na tuto zvláštní, témìø nepouitelnou a divnì se chovající platformu.
+\newpage
+\section{Vıòatky z kódu}
+Celı program je rozdìlen do jednoho hlavního programu (\uv{main.cpp}), kde je vìtšina dùleitıch funkcí (vèetnì funkce int main()), dále souborù objektu Eq (soubory \uv{equation.cpp} a k nìmu jeho hlavièkovı souboru \uv{equation.h}), souboru defines.h a version.h. Dále jsou s programem distribuovány soubory \uv{Makefile} (kterı slouí pro Gnu Make) a soubor \uv{readme}, kterı poskytuje zjednodušenou nápovìdu k tomuto programu.
+\section{Soubor main.cpp}
+\emph{Poznámka: Celı program je docela pøehlednì a rozsáhle okomentován, nejlepším zdrojem odpovìdí je tedy mnohokráte i samotnı kód.}
+Soubor obsahuje funkci main (co je C++ obdoba Pascalovského hlavního programu, tuto funkci volá samotnı operaèní systém a jako argumenty mu pøedává parametry, se kterımi byl program volán), dále funkce draw\_axis (která na obrazovku vykreslí osy X a Y), handle\_arguments, která má na starosti ètení a parsování parametrù programu, a funkci create\_meta\_conics, která se stará o vytvoøení tolika kueloseèek, kolik jí bylo pomocí parametru -n pøedáno.
+\subsection{Funkce handle\_arguments}
+Funkce handle\_arguments je funkce na parsování paramterù, se kterımi byl program volán. Vzhledem k tomu, e parametry programu je jedinı vstup, jak mùe bıt bìh programu ovlivòován, jedná se o docela komplexní funkci. Je volána funkcí main a pøebírá od ní pole cstringù a poèet parametrù v poli. Ty pak pøevede do promìnnıch, nastaví pøíslušnı poèet objektù-kueloseèek a nakonec se rekurzivnì zavolá na zbylé prvky pole.
+\subsection{Funkce main}
+I pøes snahu funkci main co nejvíce zjednodušit se veškeré dùleité vìci dìjí pøímo v této funkci. Hned na zaèátku je vyøešeno volání programu bez parametrù (program pak nemá jaké kueloseèky vykreslit) a volání verze a helpfile (helpfile aktuálnì zatím neexistuje). Poté je zavolána funkce handle\_arguments, která vyøeší parametry, dále se vytvoøí objekty kueloseèek a jsou nastaveny na získané hodnoty. Poté je pomocí knihovny SDL inicializované okno, rozmìry 800x600 a ve smyèce jsou pak volány metody \uv{draw} pøíslušnıch objektù. Je zde také kontrola stisknuté klávesy Escape. Nakonec je vypsána zpráva o zdaøilém dokonèení programu a program se ukonèí.
+\section{Soubor equation.cpp a equation.h}
+Tyto soubory jsou soubory objektu Eq. V nich je deklarován a definován objekt, kterı reprezentuje obecnou kueloseèku. Objekt Eq je poté funkcí main nastaven na urèité hodnoty a poté pouívá vlastní metody pro dopoèet èísel a nakonec, aby se sám vykreslil na obrazovku.
+\subsection{Metoda return\_ifExistsX a return\_ifExistsY}
+Tyto metody pouívají èást rovnice pro získání x a y jak byli øeèeny vıše (oddíl \ref{rovnice}, str. \pageref{rovnice}) a to on èást s diskriminantem. Pokud pro dané X (Y) je diskriminant zápornı, neodpovídá tìmto souøadnicím ádnı bod, pokud je nulovı tak právì jeden a pokud je kladnı tak právì dva body.
+\subsection{Metoda draw}
+Tato metoda postupnì projídí Xovou a (ne u parabol) Yovou osu, pomocí ifExists zjišuje, kolik bodù odpovídá tìmto souøadnicím, pomocí return\_y1-x2 získává souøadnice a poté je po pixelech na dané souøadnice vykresluje.
+\section{Soubory version.h a defines.h}
+Soubor version.h si uchovává informace o aktuální verzi programu. Jeho promenné jsou volány, pokud spustíte program s parametrem \uv{-v}. Soubor defines.h obsahuje konstanty rozlišení, barev a podobnì.
+\newpage
+\section{Ostatní}
+Pro další informace si pøeètìte uivatelskou pøíruèku, zdrojové kódy, nebo kontaktuje pøímo mì na boloomka@gmail.com.\\
+Text licence GNU/GPL by mìl bıt distribuován s programem.\\
+Sázeno v programu \LaTeX\\
+\copyright Jan Sedlák, 2009
+\end{document}

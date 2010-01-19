@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_layout_file>
+	<ActiveTarget name="Debug" />
+	<File name="defines.h" open="1" top="0" tabpos="4">
+		<Cursor position="107" topLine="0" />
+	</File>
+	<File name="equation.cpp" open="1" top="0" tabpos="3">
+		<Cursor position="429" topLine="0" />
+	</File>
+	<File name="equation.h" open="1" top="0" tabpos="2">
+		<Cursor position="1405" topLine="16" />
+	</File>
+	<File name="main.cpp" open="1" top="1" tabpos="1">
+		<Cursor position="379" topLine="0" />
+	</File>
+	<File name="version.h" open="0" top="0" tabpos="5">
+		<Cursor position="639" topLine="0" />
+	</File>
+</CodeBlocks_layout_file>
